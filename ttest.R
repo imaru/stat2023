@@ -1,0 +1,9 @@
+datA<-c(71,91,76,80,82)
+datB<-c(77,93,77,79,86)
+henA<-sum((datA-mean(datA))^2)
+henB<-sum((datB-mean(datB))^2)
+bunshi<-mean(datA)-mean(datB)
+bunbo1<-sqrt((henA+henB)/(length(datA)+length(datB)-2))
+bunbo2<-sqrt(1/length(datA)+1/length(datB))
+t<-bunshi/(bunbo1*bunbo2)
+yuui<-pt(abs(t),length(datA)+length(datB)-2,lower.tail=FALSE)*2
