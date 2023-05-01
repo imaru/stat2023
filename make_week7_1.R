@@ -4,10 +4,10 @@ mA<-65
 mB<-70
 mC<-70
 mD<-70
-sdA<-10
-sdB<-10
-sdC<-10
-sdD<-16
+sdA<-8
+sdB<-8
+sdC<-8
+sdD<-12
 
 numD<-20
 
@@ -18,6 +18,7 @@ datD<-rnorm(numD, mean=mD, sd=sdD)
 
 t.test(datA,datB)
 t.test(datA,datB,paired=T)
+t.test(datA,datC)
 t.test(datA,datD)
 
 dat<-data.frame(cbind(datA,datB,datC,datD))
