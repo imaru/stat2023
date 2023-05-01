@@ -10,6 +10,7 @@ sdC<-10
 sdD<-16
 
 numD<-20
+temp
 
 datA<-sort(rnorm(numD, mean=mA, sd=sdA))
 datB<-sort(rnorm(numD, mean=mB, sd=sdB))
