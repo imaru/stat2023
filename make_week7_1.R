@@ -21,6 +21,7 @@ t.test(datA,datB,paired=T)
 t.test(datA,datC)
 t.test(datA,datD)
 
+
 dat<-data.frame(cbind(datA,datB,datC,datD))
 boxplot(dat)
 
