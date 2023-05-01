@@ -6,6 +6,7 @@ datB<-c(77,93,79,80,86)
 dat<-read.csv('week7_1.csv')
 datA<-dat$datA
 datB<-dat$datB
+temp
 
 tailed<-2 # 片側のときは1, 両側のときは2
 
