@@ -5,7 +5,7 @@ datB<-c(77,93,79,80,86)
 # 7,8行目は検定したいデータに合わせて変えること
 dat<-read.csv('week7_1.csv')
 datA<-dat$datA
-datB<-dat$datB
+datB<-dat$datD
 
 tailed<-2 # 片側のときは1, 両側のときは2
 
