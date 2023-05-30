@@ -22,3 +22,5 @@ write.csv(dat,file='week11_1.csv', row.names = FALSE)
 dat<-tidyr::pivot_longer(dat,cols=c('datA','datB','datC'))
 anovakun(dat,'As',3)
 write.csv(dat,file='week10_1.csv', row.names = FALSE)
+
+
