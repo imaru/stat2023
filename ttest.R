@@ -5,9 +5,9 @@
 # 7,8行目は検定したいデータに合わせて変えること
 dat<-read.csv('week7_1.csv')
 datA<-dat$datA
-datB<-dat$datD
+datB<-dat$datC
 
-tailed<-2 # 片側のときは1, 両側のときは2
+tailed<-1 # 片側のときは1, 両側のときは2
 
 # 等分散の検定
 sds<-c(sd(datA), sd(datB))
