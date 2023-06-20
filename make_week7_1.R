@@ -26,7 +26,7 @@ dat<-data.frame(cbind(datA,datB,datC,datD))
 boxplot(dat)
 
 library(tidyr)
-library(ggpllot2)
+library(ggplot2)
 ldat<-tidyr::pivot_longer(dat, col=c('datA','datB','datC', 'datD'))
 
 ggplot(data=ldat,aes(x=name,y=value))+geom_violin()
