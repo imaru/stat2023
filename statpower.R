@@ -12,3 +12,8 @@ plot(xdat, ydat, type='line')
 
 library(WebPower)
 wp.rmanova(ng=1,nm=3,f=0.25,alpha=0.05,power=0.8,type=1)
+wp.t(d=1.0, alpha=0.05, power=0.8, type='two.sample', alternative = 'greater')
+wp.t(d=1.0, alpha=0.05, power=0.8, type='one.sample', alternative = 'greater')
+
+library(pwr)
+power.t.test(delta=1.0, sig.level = 0.05, type='two.sample',alternative = 'one.sided', power=0.8)
