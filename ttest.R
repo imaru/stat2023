@@ -3,11 +3,11 @@
 
 # csvファイルを読み込むときは上をコメントアウトして、下の3行を使う
 # 7,8行目は検定したいデータに合わせて変えること
-dat<-read.csv('week7_1.csv')
-datA<-dat$datA
-datB<-dat$datC
+dat<-read.csv('week13_2.csv')
+datA<-dat$methodA
+datB<-dat$methodB
 
-tailed<-1 # 片側のときは1, 両側のときは2
+tailed<-2 # 片側のときは1, 両側のときは2
 
 # 等分散の検定
 sds<-c(sd(datA), sd(datB))

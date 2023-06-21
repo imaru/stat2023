@@ -1,23 +1,34 @@
 # data summary
+n<-300
+mA<-60
+mB<-80
+mC<-60
 
-n<-10000
-mA<-110
-mB<-100
-sdA<-20
-sdB<-5
-gap<-50
+sdA<-5
+sdB<-3
+sdC<-15
+gapA<-10
 
-datA<-c(rnorm(n/2, mean=mA-gap, sd=sdA),rnorm(n/2,mean=mA+gap,sd=sdA))
-datB<-rnorm(n, mean=mB, sd=sdB)
-datC<-datB*-1.5+rnorm(100, 250, 8)
-datD<-rnorm(n, mean=mA, sd=sdA)
+math<-rnorm(n, mean=mA, sd=sdA)
+phys<-math+rnorm(n, mean=mC-mA, sd=sdC-sdA)
+math[seq(1,n/2)]<-math[seq(1,n/2)]-gapA
+math[seq(n/2+1,length(math))]<-math[seq(n/2+1,length(math))]+gapA
+eng<-rnorm(n, mean=mB, sd=sdB)
 
-hist(datD)
+hist(math)
+hist(eng)
+hist(phys)
 
-plot(datD,datC)
-cor(datB,datC)
+(90-mean(eng))/sd(eng)
+(90-mean(math))/sd(math)
+(90-mean(phys))/sd(phys)
 
-dat<-data.frame(cbind(datA,datB,datC,datD))
+cor(math,eng)
+cor(math,phys)
+cor(eng,phys)
+
+plot(math,phys)
+
+dat<-data.frame(cbind(math,eng,phys))
 write.csv(dat,file='week13_1.csv',row.names = FALSE) 
 
-hist(datA)
