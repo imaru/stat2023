@@ -11,9 +11,13 @@ plot(xdat, ydat, type='line')
 # webpower
 
 library(WebPower)
+wp.anova(k=3,f=0.25,alpha=0.05, power=0.8)
 wp.rmanova(ng=1,nm=3,f=0.25,alpha=0.05,power=0.8,type=1)
-wp.t(d=1.0, alpha=0.05, power=0.8, type='two.sample', alternative = 'greater')
+wp.t(d=1.0, alpha=0.05, power=0.8, type='two.sample', alternative='two.sided')
 wp.t(d=1.0, alpha=0.05, power=0.8, type='one.sample', alternative = 'greater')
 
 library(pwr)
-power.t.test(delta=1.0, sig.level = 0.05, type='two.sample',alternative = 'one.sided', power=0.8)
+pwr.t.test(d=1.0, sig.level=0.05,power=0.8,type='two.sample', alternative = 'greater')
+pwr.t.test(d=1.0, sig.level=0.05,power=0.8,type='paired', alternative = 'greater')
+pwr.t.test(d=1.0, sig.level=0.05,power=0.8,type='paired', alternative = 'two.sided')
+pwr.anova.test(k=3, f=0.25, sig.level=0.05, power=0.8)
