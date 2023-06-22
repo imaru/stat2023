@@ -62,37 +62,38 @@ write.csv(cdat,file='week13_2.csv',row.names = FALSE)
 
 # anova
 # between(2) x within(4) design
-n<-20
+# n<-20
+# 
+# mP<-70
+# eP<-90
+# pP<-60
+# sP<-80
+# 
+# mB<-80
+# eB<-80
+# pB<-50
+# sB<-80
+# 
+# sd<-10
+# 
+# mathP<-rnorm(n,mean=mP,sd=sd)
+# engP<-rnorm(n,mean=eP, sd=sd)
+# progP<-rnorm(n,mean=pP, sd=sd)
+# statP<-rnorm(n,mean=sP, sd=sd)
+# 
+# mathB<-rnorm(n,mean=mB,sd=sd)
+# engB<-rnorm(n,mean=eB, sd=sd)
+# progB<-rnorm(n,mean=pB, sd=sd)
+# statB<-rnorm(n,mean=sB, sd=sd)
+# 
+# datP<-cbind(rep('psych',n), mathP,engP,progP,statP)
+# datB<-cbind(rep('buis', n), mathB,engB,progB,statB)
+# anovadat<-rbind(datP,datB)
+# colnames(anovadat)<-c('division','math','eng','programing','statistics')
+# anovadat<-data.frame(anovadat)
+# write.csv(anovadat,file='week13_3.csv',row.names = FALSE) 
 
-mP<-70
-eP<-90
-pP<-60
-sP<-80
-
-mB<-80
-eB<-80
-pB<-50
-sB<-80
-
-sd<-10
-
-mathP<-rnorm(n,mean=mP,sd=sd)
-engP<-rnorm(n,mean=eP, sd=sd)
-progP<-rnorm(n,mean=pP, sd=sd)
-statP<-rnorm(n,mean=sP, sd=sd)
-
-mathB<-rnorm(n,mean=mB,sd=sd)
-engB<-rnorm(n,mean=eB, sd=sd)
-progB<-rnorm(n,mean=pB, sd=sd)
-statB<-rnorm(n,mean=sB, sd=sd)
-
-datP<-cbind(rep('psych',n), mathP,engP,progP,statP)
-datB<-cbind(rep('buis', n), mathB,engB,progB,statB)
-anovadat<-rbind(datP,datB)
-colnames(anovadat)<-c('division','math','eng','programing','statistics')
-anovadat<-data.frame(anovadat)
-write.csv(anovadat,file='week13_3.csv',row.names = FALSE) 
-
+anovadat<-read.csv('week13_3.csv')
 source('anovakun_489.txt')
 anovakun(anovadat,'AsB',2,4)
 
