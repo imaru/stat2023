@@ -2,25 +2,35 @@
 n<-300
 mA<-60
 mB<-80
-mC<-60
+mC<-80
 
 sdA<-5
 sdB<-3
 sdC<-15
 gapA<-10
 
-math<-rnorm(n, mean=mA, sd=sdA)
-phys<-math+rnorm(n, mean=mC-mA, sd=sdC-sdA)
-math[seq(1,n/2)]<-math[seq(1,n/2)]-gapA
-math[seq(n/2+1,length(math))]<-math[seq(n/2+1,length(math))]+gapA
-eng<-rnorm(n, mean=mB, sd=sdB)
+# math<-rnorm(n, mean=mA, sd=sdA)
+# phys<-math+rnorm(n, mean=mC-mA, sd=sdA)
+# math[seq(1,n/2)]<-math[seq(1,n/2)]-gapA
+# math[seq(n/2+1,length(math))]<-math[seq(n/2+1,length(math))]+gapA
+# eng<-rnorm(n, mean=mB, sd=sdB)
+# 
+# dat<-data.frame(cbind(math,eng,phys))
+# write.csv(dat,file='week13_1.csv',row.names = FALSE)
+
+dat<-read.csv('week13_1.csv')
+attach(dat)
+
+print(c(mean(math),sd(math)))
+print(c(mean(eng),sd(eng)))
+print(c(mean(phys),sd(phys)))
 
 hist(math)
 hist(eng)
 hist(phys)
 
-(90-mean(eng))/sd(eng)
 (90-mean(math))/sd(math)
+(90-mean(eng))/sd(eng)
 (90-mean(phys))/sd(phys)
 
 cor(math,eng)
@@ -29,8 +39,6 @@ cor(eng,phys)
 
 plot(math,phys)
 
-dat<-data.frame(cbind(math,eng,phys))
-write.csv(dat,file='week13_1.csv',row.names = FALSE) 
 
 # confidence interval / t test
 n<-15
@@ -40,8 +48,15 @@ mB<-65
 sdA<-10
 sdB<-8
 
-methodA<-sort(rnorm(n, mean=mA, sd=sdA))
-methodB<-sort(rnorm(n, mean=mB, sd=sdB))
+# methodA<-sort(rnorm(n, mean=mA, sd=sdA))
+# methodB<-sort(rnorm(n, mean=mB, sd=sdB))
+# 
+# cdat<-data.frame(cbind(methodA,methodB))
+# write.csv(cdat,file='week13_2.csv',row.names = FALSE) 
+
+cdat<-read.csv('week13_2.csv')
+
+attch(cdat)
 hist(methodA)
 hist(methodB)
 
@@ -51,14 +66,13 @@ upperA<-mean(methodA)+sd(methodA)/sqrt(length(methodA))*qt(0.05/2,length(methodA
 lowerB<-mean(methodB)-sd(methodB)/sqrt(length(methodB))*qt(0.05/2,length(methodB)-1,lower.tail = F)
 upperB<-mean(methodB)+sd(methodB)/sqrt(length(methodB))*qt(0.05/2,length(methodB)-1,lower.tail = F)
 
-print(c(lowerA, upperA))
-print(c(lowerB, upperB))
+print(c(mean(methodA), lowerA, upperA))
+print(c(mean(methodB), lowerB, upperB))
 
+var.test(methodA, methodB)
 t.test(methodA, methodB, paired=FALSE, var.equal = TRUE)
 t.test(methodA, methodB, paired=TRUE)
-cdat<-data.frame(cbind(methodA,methodB))
 boxplot(cdat)
-write.csv(cdat,file='week13_2.csv',row.names = FALSE) 
 
 # anova
 # between(2) x within(4) design
