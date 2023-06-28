@@ -21,23 +21,26 @@ gapA<-10
 dat<-read.csv('week13_1.csv')
 attach(dat)
 
-print(c(mean(math),sd(math)))
-print(c(mean(eng),sd(eng)))
-print(c(mean(phys),sd(phys)))
+label<-unique(dat[,1])
+datA<-dat[dat[,1]==label[1],2]
+datB<-dat[dat[,1]==label[2],2]
+datC<-dat[dat[,1]==label[3],2]
 
-hist(math)
-hist(eng)
-hist(phys)
+print(c(mean(datA),sd(datA)))
+print(c(mean(datB),sd(datB)))
+print(c(mean(datC),sd(datC)))
 
-(90-mean(math))/sd(math)
-(90-mean(eng))/sd(eng)
-(90-mean(phys))/sd(phys)
+hist(datA)
+hist(datB)
+hist(datC)
 
-cor(math,eng)
-cor(math,phys)
-cor(eng,phys)
+(90-mean(datA))/sd(datA)
+(90-mean(datB))/sd(datB)
+(90-mean(datC))/sd(datC)
 
-plot(math,phys)
+cor(datA,datB)
+cor(datA,datC)
+cor(datB,datC)
 
 
 # confidence interval / t test

@@ -1,15 +1,30 @@
+# データを直接入力する場合
 #datA<-c(71,91,76,80,82)
 #datB<-c(77,93,79,80)
 
-# csvファイルを読み込むときは上をコメントアウトして、下の3行を使う
-# 7,8行目は検定したいデータに合わせて変えること
-dat<-read.csv('asyndata.csv')
-datA<-dat$male[!is.na(dat[,1])]
-datB<-dat$female[!is.na(dat[,2])]
+# csvファイルを読み込むときは上をコメントアウトして、
+# 10-20行目を検定したいデータに合わせて変えること
+# wide型とlong型はどちらか"だけ"を実行すること
+# この部分は1要因2水準のlong型データから各水準のデータを取り出すときにも使える
 
+# 読み込むデータファイルを指定
+dat<-read.csv('test1.csv')
+
+# wide型データの場合
+#datA<-dat[!is.na(dat[,1]),1]
+#datB<-dat[!is.na(dat[,2]),2]
+
+# long型データの場合, 水準が3以上の場合にも使える
+label<-unique(dat[,1])
+datA<-dat[dat[,1]==label[1],2]
+datB<-dat[dat[,1]==label[2],2]
+# datC<-dat[dat[,1]==label[3],2]
+# datD<-dat[dat[,1]==label[4],2]
+
+# 実施したい検定に合わせて変えること
 tailed<-1 # 片側のときは1, 両側のときは2
 
-# 等分散の検定
+# 等分散の検定、対応なしの場合、まずはこれを実施
 sds<-c(sd(datA), sd(datB))
 dfs<-c(length(datA)-1, length(datB)-1)
 bb<-which(max(sds)==sds)
@@ -19,7 +34,7 @@ Fr<-sds[maxi]^2/sds[mini]^2
 Fp<-pf(Fr,dfs[maxi],dfs[mini], lower.tail = F)*2
 print(paste('等分散の検定: F(', as.character(dfs[maxi]), ', ', as.character(dfs[mini]), ')=', as.character(round(Fr,3)), ', p=', as.character(round(Fp,3)),sep=''))
 
-# 対応なし、分散が等しいことを仮定
+# 対応なし、分散が等しいことを仮定（スチューデント）
 s_df<-length(datA)+length(datB)-2
 s_hsA<-sum((datA-mean(datA))^2)
 s_hsB<-sum((datB-mean(datB))^2)
@@ -30,7 +45,7 @@ sT<-s_bunshi/(s_bunbo1*s_bunbo2)
 sp<-pt(abs(sT),s_df,lower.tail=FALSE)*tailed
 print(paste('対応なし・等分散：t(',as.character(s_df),')=',as.character(round(sT,3)),', p=',as.character(round(sp,3)),sep=''))
 
-# 対応なし、分散が等しいことを仮定しない
+# 対応なし、分散が等しいことを仮定しない（ウェルチ）
 w_bunshi<-mean(datA)-mean(datB)
 w_bunbo<-sqrt(sd(datA)^2/length(datA)+sd(datB)^2/length(datB))
 wT<-w_bunshi/w_bunbo
