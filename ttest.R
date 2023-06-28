@@ -1,13 +1,13 @@
 #datA<-c(71,91,76,80,82)
-#datB<-c(77,93,79,80,86)
+#datB<-c(77,93,79,80)
 
 # csvファイルを読み込むときは上をコメントアウトして、下の3行を使う
 # 7,8行目は検定したいデータに合わせて変えること
-dat<-read.csv('week13_2.csv')
-datA<-dat$methodA
-datB<-dat$methodB
+dat<-read.csv('asyndata.csv')
+datA<-dat$male[!is.na(dat[,1])]
+datB<-dat$female[!is.na(dat[,2])]
 
-tailed<-2 # 片側のときは1, 両側のときは2
+tailed<-1 # 片側のときは1, 両側のときは2
 
 # 等分散の検定
 sds<-c(sd(datA), sd(datB))
