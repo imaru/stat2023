@@ -8,11 +8,11 @@
 # この部分は1要因2水準のlong型データから各水準のデータを取り出すときにも使える
 
 # 読み込むデータファイルを指定
-dat<-read.csv('test1.csv')
+dat<-read.csv('week13_2.csv')
 
 # wide型データの場合
-#datA<-dat[!is.na(dat[,1]),1]
-#datB<-dat[!is.na(dat[,2]),2]
+datA<-dat[!is.na(dat[,1]),1]
+datB<-dat[!is.na(dat[,2]),2]
 
 # long型データの場合, 水準が3以上のデータを抜き出すときにも使える
 label<-unique(dat[,1])

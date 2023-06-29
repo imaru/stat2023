@@ -59,7 +59,7 @@ sdB<-8
 
 cdat<-read.csv('week13_2.csv')
 
-attch(cdat)
+attach(cdat)
 hist(methodA)
 hist(methodB)
 
@@ -74,6 +74,7 @@ print(c(mean(methodB), lowerB, upperB))
 
 var.test(methodA, methodB)
 t.test(methodA, methodB, paired=FALSE, var.equal = TRUE)
+t.test(methodA, methodB, paired=FALSE, var.equal = FALSE)
 t.test(methodA, methodB, paired=TRUE)
 boxplot(cdat)
 
