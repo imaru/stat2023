@@ -2,9 +2,14 @@
 
 # q3
 dat<-read.csv('test1.csv')
+
+boxplot(dat$time~dat$sex)
+
 label<-unique(dat[,1])
 m<-dat[dat[,1]==label[1],2]
 fm<-dat[dat[,1]==label[2],2]
+
+boxplot(m,fm)
 
 mean(m)
 sd(m)
