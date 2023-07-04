@@ -2,7 +2,7 @@
 dat<-read.csv('exp2023.csv')
 boxplot(dat)
 source('anovakun_489.txt')
-anovakun(dat,'sA',4)
+anovakun(dat,'sA',4, geta=T)
 
 library(tidyr)
 ldat<-pivot_longer(dat,cols=c('orange','blue','green','magenta'))
