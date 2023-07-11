@@ -15,7 +15,7 @@ datA<-dat[!is.na(dat[,1]),1]
 datB<-dat[!is.na(dat[,2]),2]
 
 # long型データの場合, 水準が3以上のデータを抜き出すときにも使える
-labyel<-unique(dat[,1])
+label<-unique(dat[,1])
 datA<-dat[dat[,1]==label[1],2]
 datB<-dat[dat[,1]==label[2],2]
 # datC<-dat[dat[,1]==label[3],2]
